@@ -10,7 +10,8 @@ import { TyrkishAirlinesIcon } from "../../../shared/ui/SVGIcons";
 import { TicketCardRoot } from "./TicketCard.styles";
 import { TicketInfo } from "../TicketInfo/TicketInfo";
 
-import { TicketStops } from "../TicketStops/TicketStops";
+import { TicketStops } from "../TicketStops";
+import { formatTime } from "../../../shared/ui/libs/formatTime";
 
 export const TicketCard = ({ ticket }: { ticket: ITicket }) => {
   return (
@@ -48,14 +49,14 @@ export const TicketCard = ({ ticket }: { ticket: ITicket }) => {
             gap: "6px",
           }}
         >
-          <Typography gutterBottom variant="h3" component="p">
-            {ticket.departure_time}
+          <Typography variant="h3" component="p">
+            {formatTime(ticket.departure_time)}
           </Typography>
 
           <TicketStops stops={ticket.stops} />
 
-          <Typography gutterBottom variant="h3" component="p">
-            {ticket.arrival_time}
+          <Typography variant="h3" component="p">
+            {formatTime(ticket.arrival_time)}
           </Typography>
         </Box>
 

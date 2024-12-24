@@ -10,8 +10,14 @@ import {
   FormGroup,
   Typography,
 } from "@mui/material";
+import { useState } from "react";
+import { stopsFilters } from "../../../feature/filters.utils";
+import { useFilters } from "../../../feature/useFilters";
 
 export const SideBar = () => {
+  const [currency, setCurrency] = useState("RUB");
+  const { onStopsFiltersChange } = useFilters();
+
   return (
     <>
       <Box
@@ -32,15 +38,15 @@ export const SideBar = () => {
           >
             Валюта
           </Typography>
-          <ButtonGroup variant="outlined" aria-label="group">
+          <ButtonGroup variant="outlined" aria-label="currency group">
             {["RUB", "USD", "EUR"].map((text) => (
               <Button
                 value={text}
                 key={text}
                 color="secondary"
-                variant={text === "RUB" ? "contained" : "outlined"}
-                onClick={(e) => console.log(e.target)}
-                sx={{ color: text === "RUB" ? "white" : "grey.700" }}
+                variant={text === currency ? "contained" : "outlined"}
+                onClick={() => setCurrency("RUB")}
+                sx={{ color: text === currency ? "white" : "grey.700" }}
               >
                 {text}
               </Button>
@@ -58,18 +64,18 @@ export const SideBar = () => {
             Колличество пересадок
           </Typography>
           <FormGroup aria-label="position" row>
-            {[
-              "Все",
-              "Без пересадок",
-              "1 пересадка",
-              "2 пересадки",
-              "3 пересадки",
-            ].map((label) => (
+            {stopsFilters.map(({ value, label }) => (
               <FormControlLabel
                 sx={{ color: "grey.700" }}
-                key={label}
-                value={label}
-                control={<Checkbox color="secondary" />}
+                key={value}
+                value={value}
+                control={
+                  <Checkbox
+                    name={value}
+                    color="secondary"
+                    onChange={onStopsFiltersChange}
+                  />
+                }
                 label={label}
               />
             ))}

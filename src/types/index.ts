@@ -1,3 +1,5 @@
+import { Dispatch, SetStateAction } from "react";
+
 export interface ITicket {
   origin: string;
   origin_name: string;
@@ -11,3 +13,9 @@ export interface ITicket {
   stops: number;
   price: number;
 }
+
+export type TicketsContextType = {
+  ticketsResult: ITicket[];
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  setTicketsResult: Dispatch<SetStateAction<never[] | any>>;
+};

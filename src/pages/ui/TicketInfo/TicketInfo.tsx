@@ -1,4 +1,5 @@
 import { Box, Typography } from "@mui/material";
+import { formatDate } from "../../../shared/ui/libs/formatDate";
 
 export const TicketInfo = ({
   title,
@@ -13,7 +14,7 @@ export const TicketInfo = ({
         {title}
       </Typography>
       <Typography gutterBottom variant="caption" component="p" color="grey.500">
-        {date}
+        {formatDate(date)}
       </Typography>
     </Box>
   );

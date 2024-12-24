@@ -1,12 +1,15 @@
-import { SideBar } from "../../../shared/ui/SideBar/SideBar";
+import TicketsContextProvider from "../../../feature/ticketsContext";
+import { SideBar } from "../../../shared/ui/SideBar";
 import { TicketsList } from "../TicketsList";
 import { TicketsPageContentRoot } from "./TicketsPageContent.styles";
 
 export const TicketsPageContent = () => {
   return (
-    <TicketsPageContentRoot>
-      <SideBar />
-      <TicketsList />
-    </TicketsPageContentRoot>
+    <TicketsContextProvider>
+      <TicketsPageContentRoot>
+        <SideBar />
+        <TicketsList />
+      </TicketsPageContentRoot>
+    </TicketsContextProvider>
   );
 };
