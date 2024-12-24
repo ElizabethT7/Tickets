@@ -1,6 +1,6 @@
 import { Box, Typography } from "@mui/material";
 import { Divider } from "../../../shared/ui/Divider";
-import { plural } from "../../../shared/ui/libs/plural";
+import { plural } from "../../../shared/libs/plural";
 
 export const TicketStops = ({ stops }: { stops: number }) => {
   return (

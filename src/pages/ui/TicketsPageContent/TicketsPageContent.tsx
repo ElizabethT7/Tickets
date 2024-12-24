@@ -1,5 +1,5 @@
 import TicketsContextProvider from "../../../feature/ticketsContext";
-import { SideBar } from "../../../shared/ui/SideBar";
+import { SideBar } from "../../../shared/ui/SideBar/SideBar";
 import { TicketsList } from "../TicketsList";
 import { TicketsPageContentRoot } from "./TicketsPageContent.styles";
 

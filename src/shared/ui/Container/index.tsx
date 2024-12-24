@@ -3,7 +3,7 @@ import { styled } from "@mui/material/styles";
 
 export const Container = styled(Box)(({ theme }) => ({
   width: "100%",
-  height: "100vh",
+  minHeight: "100vh",
   maxWidth: "1920px",
   margin: "0 auto",
   padding: "0 16px",

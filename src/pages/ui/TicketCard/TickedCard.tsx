@@ -7,27 +7,16 @@ import {
 } from "@mui/material";
 import { ITicket } from "../../../types";
 import { TyrkishAirlinesIcon } from "../../../shared/ui/SVGIcons";
-import { TicketCardRoot } from "./TicketCard.styles";
-import { TicketInfo } from "../TicketInfo/TicketInfo";
+import { CardActionsContainer, TicketCardRoot } from "./TicketCard.styles";
+import { TicketInfo } from "../TicketInfo";
 
 import { TicketStops } from "../TicketStops";
-import { formatTime } from "../../../shared/ui/libs/formatTime";
+import { formatTime } from "../../../shared/libs/formatTime";
 
 export const TicketCard = ({ ticket }: { ticket: ITicket }) => {
   return (
     <TicketCardRoot>
-      <Box
-        sx={{
-          borderRight: 1,
-          borderColor: "grey.300",
-          paddingBottom: "16px",
-
-          ".MuiSvgIcon-root": {
-            width: "184px",
-            height: "94px",
-          },
-        }}
-      >
+      <CardActionsContainer>
         <TyrkishAirlinesIcon />
         <CardActions sx={{ padding: "16px" }}>
           <Button
@@ -40,15 +29,9 @@ export const TicketCard = ({ ticket }: { ticket: ITicket }) => {
             за {ticket.price} ₽
           </Button>
         </CardActions>
-      </Box>
+      </CardActionsContainer>
       <CardContent>
-        <Box
-          sx={{
-            width: "100%",
-            display: "flex",
-            gap: "6px",
-          }}
-        >
+        <Box width="100%" display="flex" gap="6px">
           <Typography variant="h3" component="p">
             {formatTime(ticket.departure_time)}
           </Typography>
@@ -60,9 +43,7 @@ export const TicketCard = ({ ticket }: { ticket: ITicket }) => {
           </Typography>
         </Box>
 
-        <Box
-          sx={{ display: "flex", justifyContent: "space-between", gap: "16px" }}
-        >
+        <Box display="flex" justifyContent="space-between" gap="16px">
           <TicketInfo
             title={`${ticket.origin}, ${ticket.origin_name}`}
             date={ticket.departure_date}
